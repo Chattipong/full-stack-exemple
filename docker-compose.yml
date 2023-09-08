@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  backend: 
+    container_name: dream_api
+    image: chat-socket:01
+    build: ./backend
+    ports:
+      - "3088:3088"
+    networks:
+      - default
+    environment:
+      - DATABASE_HOST=192.168.96.2
+      - DREAM_PORT=3088
+
+networks:
+  default:
+    external: true
+    name: mongo_network
